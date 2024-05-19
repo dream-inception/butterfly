@@ -1,0 +1,49 @@
+## IDF Component Manager Manifest File
+dependencies:
+  espressif/esp-dsp: "^1.4.12"
+  ## Required IDF version
+  idf:
+    version: ">=5.1.0"
+
+  dream-inception/led:
+    path: components/led
+    git: https://github.com/dream-inception/software_common.git
+    version: "29498943dc42c222805cfe335aa3d59b014aa367"
+
+  dream-inception/sensor:
+    path: components/sensor
+    git: https://github.com/dream-inception/software_common.git
+    version: "29498943dc42c222805cfe335aa3d59b014aa367"
+
+  dream-inception/speech:
+    path: components/speech
+    git: https://github.com/dream-inception/software_common.git
+    version: "29498943dc42c222805cfe335aa3d59b014aa367"
+
+  dream-inception/touchpad:
+    path: components/touchpad
+    git: https://github.com/dream-inception/software_common.git
+    version: "29498943dc42c222805cfe335aa3d59b014aa367"
+
+  dream-inception/utils:
+    path: components/utils
+    git: https://github.com/dream-inception/software_common.git
+    version: "29498943dc42c222805cfe335aa3d59b014aa367"
+
+  espressif/esp_rainmaker: "^1.1.0"
+  espressif/qrcode:
+    path: components/qrcode
+    git: https://github.com/espressif/esp-rainmaker.git
+    version: "ff0dd329020a52ae8cf2fb4f6800d9f8e9cc9eeb"
+  espressif/gpio_button:
+    path: components/gpio_button
+    git: https://github.com/espressif/esp-rainmaker.git
+    version: "ff0dd329020a52ae8cf2fb4f6800d9f8e9cc9eeb"
+  espressif/app_wifi:
+    path: examples/common/app_wifi
+    git: https://github.com/espressif/esp-rainmaker.git
+    version: "ff0dd329020a52ae8cf2fb4f6800d9f8e9cc9eeb"
+  espressif/app_reset:
+    path: examples/common/app_reset
+    git: https://github.com/espressif/esp-rainmaker.git
+    version: "ff0dd329020a52ae8cf2fb4f6800d9f8e9cc9eeb"
