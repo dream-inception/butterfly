@@ -97,7 +97,7 @@ static const commands_t g_commands[] = {
     {COMMANDS_ID_LIGTH_BLUE, "light_blue", {"ba deng tiao cheng lan se", "lan deng", "lan se", "yi yu de yan se"}},
     {COMMANDS_ID_LIGTH_BLINK, "light_blink", {"di er hun ji die shen zhi guang", "die shen zhi guang", "di er hun ji"}},
     {COMMANDS_ID_CONDITIONER_ON, "conditioner_on", {"da kai kong tiao", "kai kong tiao"}},
-    {COMMANDS_ID_CONDITIONER_OFF, "conditioner_off", {"guan bi kong tiao", "ye deng mo shi"}},
+    {COMMANDS_ID_CONDITIONER_OFF, "conditioner_off", {"guan bi kong tiao", "guan kong tiao"}},
     {COMMANDS_ID_MODE_LIGHT, "mode_light", {"deng guang mo shi", "ye deng mo shi"}},
     {COMMANDS_ID_MODE_REMOTE, "mode_remote", {"yao kong mo shi", "yuan cheng kong zhi mo shi"}},
     {COMMANDS_ID_MODE_SENSER, "mode_senser", {"chuan gan qi mo shi", "jian ce mo shi"}},
@@ -177,6 +177,9 @@ static void eye_switch(bool on)
             case MODE_SENSER:
                 led_ws2812_set_rgb(INDICATOR_EYE, INDICATOR_NUM_EYE, 0, 16, 0, 250);
                 break;
+            case MODE_MUSIC_RHYTHM:
+                led_ws2812_blink_start(INDICATOR_EYE, INDICATOR_NUM_EYE, 255, 16, 200, 1000);
+                break;
             default:
                 break;
         }
@@ -196,6 +199,9 @@ static void eye_blink_start()
             break;
         case MODE_SENSER:
             led_ws2812_blink_start(INDICATOR_EYE, INDICATOR_NUM_EYE, 0, 16, 0, 1000);
+            break;
+        case MODE_MUSIC_RHYTHM:
+            led_ws2812_blink_start(INDICATOR_EYE, INDICATOR_NUM_EYE, 0, 16, 255, 1000);
             break;
         default:
             break;
@@ -752,6 +758,8 @@ void app_main()
     sensor_mpu6050_init(&mpu6050_config);
     xTaskCreate(sensor_mpu6050_read_task, "sensor_mpu6050_read_task", 1024 * 4, NULL, 5, NULL);
     xTaskCreate(voice_control_task, "voice_control_task", 1024 * 4, NULL, 15, NULL);
+
+    eye_blink_start();
 
     extern void connect_rainmaker(int running_mode);
     connect_rainmaker(g_running_mode);
